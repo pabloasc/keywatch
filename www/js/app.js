@@ -43,7 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'keywatch.utils'])
     url: "/browse",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/browse.html",
+        controller: 'startKeyboard'
       }
     }
   })
