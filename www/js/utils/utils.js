@@ -3,8 +3,8 @@ angular.module('keywatch.utils', ['ionic'])
 .factory('Draw', ['$window', function($window) {
   return  {
     initKeyboard: function($window) {
-      var polygon1 = this.Polygon("canvas1","container1",150);
-      var polygon2 = this.Polygon("canvas2","container2",150);
+      var polygon1 = this.Polygon("canvas1","container1",80);
+      var polygon2 = this.Polygon("canvas2","container2",80);
     },
     Triangle: function(position,canvas,width) {
         this.widthVal = width;
@@ -12,8 +12,7 @@ angular.module('keywatch.utils', ['ionic'])
         this.position = position;
         this.topHeight = 0;
         moveRight = (position * (this.widthVal/2)) - (this.widthVal/2);
-
-        if(position >= 4) {
+        if (position > 3) {
             moveRight = moveRight - (this.widthVal * 1.5);
             this.topHeight = this.heightVal;
             this.heightVal = (this.heightVal * 2) + 1;
@@ -26,32 +25,22 @@ angular.module('keywatch.utils', ['ionic'])
         var ctx = canvas.getContext("2d");
         ctx.beginPath();
 
-        if(position < 4) {
-            if(position == 2)  {
-                ctx.moveTo(this.p1 - (this.widthVal / 2),this.heightVal - (this.heightVal * 2));
-                ctx.lineTo((this.p2*2) - (this.widthVal / 2),this.topHeight);
-                ctx.lineTo(this.p3 - (this.widthVal / 2),this.heightVal);
-            }
-            else {
-                ctx.moveTo(this.p1,this.heightVal);
-                ctx.lineTo(this.p2,this.topHeight);
-                ctx.lineTo(this.p3,this.heightVal);
-            }
-        }
-        else {
-            if(position == 5)  {
-                ctx.moveTo(this.p1,this.heightVal);
-                ctx.lineTo((this.p2*2) - (this.widthVal),this.topHeight);
-                ctx.lineTo(this.p3,this.heightVal);
-            }
-            else {
-                ctx.moveTo(this.p1,this.topHeight);
-                ctx.lineTo(this.p3,this.topHeight);
-                ctx.lineTo(this.p2,this.heightVal);
-            }
+        if (position % 2) {
+          ctx.moveTo(this.p1,this.heightVal);
+          ctx.lineTo(this.p2,this.topHeight);
+          ctx.lineTo(this.p3,this.heightVal);
+        } else {
+          ctx.moveTo(this.p1,this.topHeight);
+          ctx.lineTo(this.p3,this.topHeight);
+          ctx.lineTo(this.p2,this.heightVal);
         }
 
-        ctx.fillStyle="#FFF";
+        var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal);
+        grd.addColorStop(0, '#CCC');
+        grd.addColorStop(1, '#FFF');
+        ctx.fillStyle = grd;
+
+        //ctx.fillStyle="#FFF";
         ctx.strokeStyle = '#CCC';
         ctx.lineWidth = 1;
 
@@ -69,12 +58,9 @@ angular.module('keywatch.utils', ['ionic'])
         containerName.style.position = "relative";
 
         if(canvas.getContext)  {
-            var triangle1 = this.Triangle(1,canvas,this.widthVal);
-            var triangle2 = this.Triangle(2,canvas,this.widthVal);
-            var triangle3 = this.Triangle(3,canvas,this.widthVal);
-            var triangle4 = this.Triangle(4,canvas,this.widthVal);
-            var triangle5 = this.Triangle(5,canvas,this.widthVal);
-            var triangle6 = this.Triangle(6,canvas,this.widthVal);
+            for (i=1; i<7; i++) {
+              this.Triangle(i,canvas,this.widthVal);
+            }
         }
     }
   }

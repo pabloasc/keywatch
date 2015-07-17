@@ -1,39 +1,30 @@
 #canvas1 {
 	position:relative;
 }
-
-.pos_1 {
-	position:relative;
-	width:30%;
-	height:30%;
-	color:#000;
-	z-index: 2;
-}
-
 #canvas2 {
 	position:relative;
-	top:200px;
-	left:300px;
+	top: 70px;
+	left: 120px;
 }
 
 .container {
-	position:fixed;
-	left:8px;
-	top:2px;
+	position: fixed;
+	left: 8px;
+	top: 5px;
 }
 
 div[class^="letter_pos_"]	{
-	width:140px;
-	height:125px;
+	width: 140px;
+	height: 125px;
 	/*border:1px solid #000;*/
-	overflow:hidden;
-	position:absolute;
+	overflow: hidden;
+	position: absolute;
 	border-radius: 50%;
-	text-align:center;
-	transform-origin: 100% 100% 0;	
+	text-align: center;
+	transform-origin: 100% 100% 0;
 }
 
 div[class^="letter_pos_"]:hover	{
-	background:#FF0000;
-	
+	background: #FF0000;
+
 }
