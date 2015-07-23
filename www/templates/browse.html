@@ -2,18 +2,33 @@
   <ion-content>
     <!-- Unless canvas size is specified default size is 300 w x 150 h -->
 
+    <div detect-gestures gesture-type="drag" id="Kbd">
 
-	<canvas id="canvas1" width="160" height="160" ></canvas>
-	<div id="container1" class="container" width="80" height="80" ></div>
+		<canvas id="canvas1" width="160" height="160" ></canvas>
+		<span id="container1" class="container" width="80" height="80" ></span>
 
-	<canvas id="canvas2" width="160" height="160" ></canvas>
-	<div id="container2" class="container" width="80" height="80" ></div>
+		<canvas id="canvas2" width="160" height="160" ></canvas>
+		<span id="container2" class="container" width="80" height="80" ></span>
 
-	<canvas id="canvas3" width="160" height="160" ></canvas>
-	<canvas id="canvas4" width="160" height="160" ></canvas>
-	<canvas id="canvas5" width="160" height="160" ></canvas>
-	<canvas id="canvas6" width="160" height="160" ></canvas>
+		<canvas id="canvas3" width="160" height="160" ></canvas>
+		<span id="container3" class="container" width="80" height="80" ></span>
 
+		<canvas id="canvas4" width="160" height="160" ></canvas>
+		<span id="container4" class="container" width="80" height="80" ></span>
+
+		<canvas id="canvas5" width="160" height="160" ></canvas>
+		<span id="container5" class="container" width="80" height="80" ></span>
+
+		<canvas id="canvas6" width="160" height="160" ></canvas>
+		<span id="container6" class="container" width="80" height="80" ></span>
+
+		<canvas id="canvas7" width="160" height="160" ></canvas>
+		<span id="container7" class="container" width="80" height="80" ></span>
+
+
+	</div>
+
+	<div class="col"><h2>Drag : {{data.drag}}</h2></div>
 
   </ion-content>
 </ion-view>

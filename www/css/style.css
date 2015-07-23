@@ -1,11 +1,42 @@
+body {
+	cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
 #canvas1 {
 	position:relative;
+	left: 120px;
 }
 #canvas2 {
 	position:relative;
 	top: 70px;
+	left: 0px;
+}
+#canvas3 {
+	position:relative;
+	top: 70px;
+	left: 240px;
+}
+#canvas4 {
+	position:relative;
+	top: 140px;
 	left: 120px;
 }
+#canvas5 {
+	position:relative;
+	top: 210px;
+	left: 0px;
+}
+#canvas6 {
+	position:relative;
+	top: 210px;
+	left: 240px;
+}
+#canvas7 {
+	position:relative;
+	top: 280px;
+	left: 120px;
+}
+
 
 .container {
 	position: fixed;

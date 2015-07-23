@@ -1,10 +1,15 @@
 angular.module('keywatch.utils', ['ionic'])
 
-.factory('Draw', ['$window', function($window) {
+.factory('Draw', ['$window', function() {
   return  {
-    initKeyboard: function($window) {
+    initKeyboard: function() {
       var polygon1 = this.Polygon("canvas1","container1",80);
       var polygon2 = this.Polygon("canvas2","container2",80);
+      var polygon3 = this.Polygon("canvas3","container3",80);
+      var polygon4 = this.Polygon("canvas4","container4",80);
+      var polygon5 = this.Polygon("canvas5","container5",80);
+      var polygon6 = this.Polygon("canvas6","container6",80);
+      var polygon7 = this.Polygon("canvas7","container7",80);
     },
     Triangle: function(position,canvas,width) {
         this.widthVal = width;
