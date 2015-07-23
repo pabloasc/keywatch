@@ -1,8 +1,8 @@
-<ion-view view-title="Browse">
+<ion-view>
   <ion-content>
     <!-- Unless canvas size is specified default size is 300 w x 150 h -->
 
-    <div detect-gestures gesture-type="drag" id="Kbd">
+    <div detect-gestures gesture-type="drag" id="Kbd" style="position:absolute;top:{{data.dragY}}px;left:{{data.dragX}}px;">
 
 		<canvas id="canvas1" width="160" height="160" ></canvas>
 		<span id="container1" class="container" width="80" height="80" ></span>
@@ -28,7 +28,9 @@
 
 	</div>
 
-	<div class="col"><h2>Drag : {{data.drag}}</h2></div>
+
+	<div class="col">DragX : {{data.dragX}}</div>
+	<div class="col">DragY : {{data.dragY}}</div>
 
   </ion-content>
 </ion-view>

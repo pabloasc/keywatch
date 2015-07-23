@@ -3,7 +3,8 @@ angular.module('keywatch.directives', ['ionic'])
 .controller('MyGestures', function($scope, $timeout) {
   
   $scope.data = {
-    drag : 0,
+    dragX : 0,
+    dragY : 0,
     swiperight: 0,
     swipeleft: 0,
     tap : 0,
@@ -14,7 +15,8 @@ angular.module('keywatch.directives', ['ionic'])
     console.log('Reporting : ' + event.type);
     
     $timeout(function() {
-      $scope.data[event.type]++;
+      $scope.data[event.type + 'X' ] = (event.gesture.center.pageX * 4) - 600;
+      $scope.data[event.type + 'Y' ] = (event.gesture.center.pageY * 4) - 600;
     })
   }
 })
