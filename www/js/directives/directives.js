@@ -15,9 +15,17 @@ angular.module('keywatch.directives', ['ionic'])
     console.log('Reporting : ' + event.type);
 
     $timeout(function() {
-      $scope.data[event.type + 'X' ] = -1 * (event.gesture.center.pageX * 3) + 20;
-      $scope.data[event.type + 'Y' ] = -1 * ((event.gesture.center.pageY * 3) - 300);
+      $scope.data[event.type + 'X' ] = -1 * (event.gesture.center.pageX * 2);
+      $scope.data[event.type + 'Y' ] = -1 * ((event.gesture.center.pageY * 2.3) - 300);
     })
+
+    if(event.type == "drag") {
+      $scope.display = "none";
+    }
+  }
+
+  $scope.onRelease = function()  {
+    $scope.display = "block";
   }
 })
 
@@ -44,6 +52,9 @@ angular.module('keywatch.directives', ['ionic'])
           break;
         case 'tap':
           $ionicGesture.on('tap', scope.reportEvent, elem);
+          break;
+        case 'release':
+          $ionicGesture.on('release', scope.reportEvent, elem);
           break;
       }
 

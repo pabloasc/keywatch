@@ -4,39 +4,58 @@ body {
 
 #canvas1 {
 	position:relative;
-	left: 120px;
+	left: 240px;
+	top:50px;
 }
 #canvas2 {
 	position:relative;
-	top: 70px;
-	left: 0px;
+	top: 154px;
+	left: 60px;
 }
 #canvas3 {
 	position:relative;
-	top: 70px;
-	left: 240px;
+	top: 154px;
+	left: 420px;
 }
 #canvas4 {
 	position:relative;
-	top: 140px;
-	left: 120px;
+	top: 259px;
+	left: 240px;
 }
 #canvas5 {
 	position:relative;
-	top: 210px;
-	left: 0px;
+	top: 363px;
+	left: 60px;
 }
 #canvas6 {
 	position:relative;
-	top: 210px;
-	left: 240px;
+	top: 363px;
+	left: 420px;
 }
 #canvas7 {
 	position:relative;
-	top: 280px;
-	left: 120px;
+	top: 467px;
+	left: 240px;
 }
 
+.imgWatch {
+	position: fixed;
+	z-index: 1000;
+	left:-500px;
+	top:-50px;
+}
+
+.imgScreenWatch {
+	position: fixed;
+	z-index: 1500;
+	left:10px;
+	top:55px;
+}
+
+#Kbd {
+	position: fixed;
+	z-index:0;
+}
 
 .container {
 	position: fixed;

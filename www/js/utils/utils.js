@@ -3,13 +3,13 @@ angular.module('keywatch.utils', ['ionic'])
 .factory('Draw', ['$window', function() {
   return  {
     initKeyboard: function() {
-      var polygon1 = this.Polygon("canvas1","container1",80);
-      var polygon2 = this.Polygon("canvas2","container2",80);
-      var polygon3 = this.Polygon("canvas3","container3",80);
-      var polygon4 = this.Polygon("canvas4","container4",80);
-      var polygon5 = this.Polygon("canvas5","container5",80);
-      var polygon6 = this.Polygon("canvas6","container6",80);
-      var polygon7 = this.Polygon("canvas7","container7",80);
+      var polygon1 = this.Polygon("canvas1","container1",120);
+      var polygon2 = this.Polygon("canvas2","container2",120);
+      var polygon3 = this.Polygon("canvas3","container3",120);
+      var polygon4 = this.Polygon("canvas4","container4",120);
+      var polygon5 = this.Polygon("canvas5","container5",120);
+      var polygon6 = this.Polygon("canvas6","container6",120);
+      var polygon7 = this.Polygon("canvas7","container7",120);
     },
     Triangle: function(position,canvas,width, char) {
         this.widthVal = width;
@@ -40,7 +40,7 @@ angular.module('keywatch.utils', ['ionic'])
           ctx.lineTo(this.p2,this.heightVal);
         }
 
-        var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal);
+        var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal );
         grd.addColorStop(0, '#CCC');
         grd.addColorStop(1, '#FFF');
         ctx.fillStyle = grd;
@@ -53,9 +53,9 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = "#00CCCC";
+        ctx.fillStyle = "#444444";
         ctx.font = "bold 16px Calibri";
-        ctx.fillText(char, moveRight + 25, this.heightVal);
+        ctx.fillText(char, moveRight + 55, this.heightVal - 55);
     },
     Polygon: function(canvasName,containerName,width) {
         this.widthVal = width;
