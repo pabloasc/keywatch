@@ -1,9 +1,12 @@
 <ion-view>
+  <!--
   <ion-content scroll="false">
+  -->
+  <ion-content>
     <!-- Unless canvas size is specified default size is 300 w x 150 h -->
 
     
-    <div detect-gestures gesture-type="drag" id="Kbd" style="position:absolute;top:{{data.dragY}}px;left:{{data.dragX}}px;z-index:0;">
+    <div detect-gestures gesture-type="drag" id="Kbd" style="position:absolute;top:{{data.posY}}px;left:{{data.posX}}px;z-index:0;">
 
 		<canvas id="canvas1" width="240" height="240" ></canvas>
 		<span id="container1" class="container" width="120" height="120" ></span>
@@ -27,14 +30,17 @@
 		<span id="container7" class="container" width="120" height="120" ></span>
 
 	</div>
-
 	<!--
 	<div class="col">DragX : {{data.dragX}}</div>
 	<div class="col">DragY : {{data.dragY}}</div>
 	-->
 	<img class="imgWatch" ng-src="img/back.png">
 
-	<img detect-gestures gesture-type="drag" class="imgScreenWatch" ng-src="img/sw_sm.png" on-release="onRelease()" style="display:{{display}}">
+	<img detect-gestures class="imgScreenWatch" ng-src="img/sw_sm.png"  on-release="onRelease()" style="display:{{display}}">
 	
+
+	<div id="output" style="border:1px black solid;width:1000px;height:1000px;position:absolute;top:1000px;">
+	</div>
+
   </ion-content>
 </ion-view>

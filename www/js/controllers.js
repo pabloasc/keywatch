@@ -1,4 +1,4 @@
-angular.module('keywatch.controllers', [])
+angular.module('keywatch.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -54,7 +54,8 @@ angular.module('keywatch.controllers', [])
 
 
 
-.controller('startKeyboard', function($scope, $window, Draw) {
+.controller('startKeyboard', function($rootScope, $scope, $window, Draw, $timeout) {
   //Draw KeyWatch
-  Draw.initKeyboard($window);
+  $rootScope.gridID = [];
+  Draw.initKeyboard($window, $scope, $timeout);
 });

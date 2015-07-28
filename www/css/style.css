@@ -3,12 +3,12 @@ body {
 }
 
 #canvas1 {
-	position:relative;
+	position: relative;
+	top: 50px;
 	left: 240px;
-	top:50px;
 }
 #canvas2 {
-	position:relative;
+	position: relative;
 	top: 154px;
 	left: 60px;
 }
@@ -18,22 +18,22 @@ body {
 	left: 420px;
 }
 #canvas4 {
-	position:relative;
+	position: relative;
 	top: 259px;
 	left: 240px;
 }
 #canvas5 {
-	position:relative;
+	position: relative;
 	top: 363px;
 	left: 60px;
 }
 #canvas6 {
-	position:relative;
+	position: relative;
 	top: 363px;
 	left: 420px;
 }
 #canvas7 {
-	position:relative;
+	position: relative;
 	top: 467px;
 	left: 240px;
 }
@@ -41,8 +41,8 @@ body {
 .imgWatch {
 	position: fixed;
 	z-index: 1000;
-	left:-500px;
-	top:-50px;
+	left: -500px;
+	top: -50px;
 }
 
 .imgScreenWatch {
@@ -54,7 +54,19 @@ body {
 
 #Kbd {
 	position: fixed;
-	z-index:0;
+	z-index: 0;
+	/*
+		Activate 3d acceletration on mobile
+	*/
+	-webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transition: transform 400ms ease
+    -moz-transition: transform 400ms ease
+    -o-transition: transform 400ms ease
+    transition: transform 400ms ease;
 }
 
 .container {
@@ -76,5 +88,4 @@ div[class^="letter_pos_"]	{
 
 div[class^="letter_pos_"]:hover	{
 	background: #FF0000;
-
 }
