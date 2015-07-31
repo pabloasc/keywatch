@@ -87,14 +87,10 @@ angular.module('keywatch.utils', ['ionic'])
 
       //$rootScope.gridID = [];
 
+      $rootScope.chars = $scope.chars;
+
       for (j = 1; j < 8; j++) {
-        if (typeof RootScope === 'undefined') {
-          RootScope = this.Polygon(j, "canvas" + j, "container" + j, 120, $scope, $rootScope);
-        } else {
-          RootScope = that.Polygon(j, "canvas" + j, "container" + j, 120, $scope, RootScope);
-        }
-         
-      
+        this.Polygon(j, "canvas" + j, "container" + j, 120, $scope, $rootScope);
       }
     },
     Triangle: function(position, canvas, width, char, idP, id, $scope, $rootScope) {
@@ -154,7 +150,7 @@ angular.module('keywatch.utils', ['ionic'])
               xMoved = y + this.closestMultiple($scope.pPol[idP.toString()+"1"]);
               yMoved = x + this.closestMultiple($scope.pPol[idP.toString()+"2"]);
               $rootScope.gridID[xMoved+'x'+yMoved] = id;
-              document.getElementById('output').innerHTML += "<span style='position:absolute;top:"+ xMoved +"px;left:"+yMoved+"px;'>.</span>";
+              //document.getElementById('output').innerHTML += "<span style='position:absolute;top:"+ xMoved +"px;left:"+yMoved+"px;'>.</span>";
             }
           }
           y = this.closestMultiple(minY);
@@ -169,7 +165,6 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.font = "bold 16px Arial";
         ctx.fillText(char, moveRight + 55, this.heightVal - 55);
 
-        return $rootScope;
     },
     Polygon: function(id, canvasName, containerName, width, $scope, $rootScope) {
         this.widthVal = width;
@@ -183,9 +178,10 @@ angular.module('keywatch.utils', ['ionic'])
               var idStr = id.toString()+i.toString();
               var that = this;
               this.Triangle(i, canvas, this.widthVal, $scope.chars[idStr], id, idStr, $scope, $rootScope);
-              
             }
         }
+
+        
     },
     closestMultiple: function(n) {
       if (n > 0) {

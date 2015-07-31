@@ -57,5 +57,6 @@ angular.module('keywatch.controllers', ['ionic'])
 .controller('startKeyboard', function($rootScope, $scope, $window, Draw, $timeout) {
   //Draw KeyWatch
   $rootScope.gridID = [];
+  $rootScope.chars = [];
   Draw.initKeyboard($window, $scope, $timeout);
 });

@@ -2,7 +2,7 @@
   <!--
   <ion-content scroll="false">
   -->
-  <ion-content>
+  <ion-content scroll="false">
     <!-- Unless canvas size is specified default size is 300 w x 150 h -->
 
     
@@ -34,12 +34,13 @@
 	<div class="col">DragX : {{data.dragX}}</div>
 	<div class="col">DragY : {{data.dragY}}</div>
 	-->
-	<img class="imgWatch" ng-src="img/back.png">
+	<img class="imgWatch" style="z-index:0;" ng-src="img/back.png">
 
 	<img detect-gestures class="imgScreenWatch" ng-src="img/sw_sm.png"  on-release="onRelease()" style="display:{{display}}">
 	
-
-	<div id="output" style="border:1px black solid;width:1000px;height:1000px;position:absolute;top:1000px;">
+	<!--
+	<div id="output" style="border:1px black solid;width:1000px;height:1000px;position:absolute;top:100px;z-index:100;">
+	-->
 	</div>
 
   </ion-content>

@@ -3,7 +3,7 @@ angular.module('keywatch.directives', ['ionic'])
 .controller('MyGestures', ['$scope', '$rootScope', '$timeout', function($scope, $rootScope, $timeout) {
   
   $timeout(function() {
-    console.log($rootScope.gridID);
+    console.log($rootScope.chars);
   })
 
   $scope.data = {
@@ -23,6 +23,18 @@ angular.module('keywatch.directives', ['ionic'])
         return 5;
   };
 
+  $scope.closestMultipleTen = function(n) {
+    if(n > 0)
+        return Math.ceil(n/10.0) * 10;
+    else if( n < 0)
+        return Math.floor(n/10.0) * 10;
+    else
+        return 10;
+  };
+
+  var posKeyX = 0;
+  var posKeyY = 0;
+
   $scope.reportEvent = function(event)  {
     console.log('Reporting : ' + event.type);
 
@@ -31,14 +43,17 @@ angular.module('keywatch.directives', ['ionic'])
       $scope.data['posY'] = -1 * ((event.gesture.center.pageY * 2.4) - 300);
     })
 
-    var posKeyX = -1 * $scope.closestMultiple($scope.data['posX']);
-    var posKeyY = -1 * $scope.closestMultiple($scope.data['posY']);
-
     $timeout(function() {
-      console.log($rootScope.gridID[posKeyX + 'x' + posKeyY]);
-      if(isNaN($rootScope.gridID[posKeyX + 'x' + posKeyY])) {
-        document.getElementById('output').innerHTML += "<div style='position:absolute;top:"+ posKeyY +"px;left:"+posKeyX+"px;'>.</div>";
+      posKeyX = $scope.closestMultiple(($scope.data['posY'] * -1) * 1.45) + 70;
+      posKeyY = $scope.closestMultiple(($scope.data['posX'] * -1) * 1.5) + 10;
+      
+      //console.log($rootScope.gridID[posKeyX + 'x' + posKeyY]);
+      /*
+      if(!isNaN($rootScope.gridID[posKeyX + 'x' + posKeyY])) {
+        document.getElementById('output').innerHTML += "<div style='font-size:8px;position:absolute;top:"+ $scope.closestMultipleTen(posKeyX) +"px;left:"+ $scope.closestMultipleTen(posKeyY) +"px;'>"+ $rootScope.gridID[posKeyX + 'x' + posKeyY] +"</div>";
       }
+      */
+      
     })
 
     //console.log($scope.gridID[posKeyX + 'x' + posKeyY]);
@@ -50,7 +65,7 @@ angular.module('keywatch.directives', ['ionic'])
       $scope.display = "none";
     } else if(event.type == "release") {
       $scope.display = "block";
-      //alert('You clicked X: ' + $scope.data['posX'] + 'and Y ' + $scope.data['posY'] );
+      alert($rootScope.gridID[posKeyX + 'x' + posKeyY]);
     }
   }
 }])
