@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view class="frame_look_feel">
   <!--
   <ion-content scroll="false">
   -->
@@ -36,7 +36,11 @@
 	-->
 	<img class="imgWatch" style="z-index:0;" ng-src="img/back.png">
 
-	<img detect-gestures class="imgScreenWatch" ng-src="img/sw_sm.png"  on-release="onRelease()" style="display:{{display}}">
+	
+
+	<img detect-gestures class="imgScreenWatch" ng-src="img/sw_sm.png" style="display:{{display}}">
+
+	<input type="text" name="txtKB" id="txtKB" class="txtKB">
 	
 	<!--
 	<div id="output" style="border:1px black solid;width:1000px;height:1000px;position:absolute;top:100px;z-index:100;">

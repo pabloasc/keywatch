@@ -54,9 +54,45 @@ angular.module('keywatch.controllers', ['ionic'])
 
 
 
-.controller('startKeyboard', function($rootScope, $scope, $window, Draw, $timeout) {
+.controller('startKeyboard', function($rootScope, $scope, $window, Draw, Keyboard, $timeout) {
   //Draw KeyWatch
   $rootScope.gridID = [];
-  $rootScope.chars = [];
-  Draw.initKeyboard($window, $scope, $timeout);
+  $timeout(function() {
+    Draw.initKeyboard($window, $scope, $timeout);
+  })
+
+  $rootScope.removeTriangle = function(n) {
+    $timeout(function() {
+      var Val = $scope.triangles[n];
+      Draw.singleTriangle(Val.p1X, Val.p1Y, Val.p2X, Val.p2Y, Val.p3X, Val.p3Y, Val.idP, Val.char, Val.w, false);
+    })
+  }
+
+  $rootScope.drawTriangle = function(n) {
+    $timeout(function() {
+      var Val = $scope.triangles[n];
+      Draw.singleTriangle(Val.p1X, Val.p1Y, Val.p2X, Val.p2Y, Val.p3X, Val.p3Y, Val.idP, Val.char, Val.w, true);
+    })
+  }
+
+  $rootScope.displayInput = function(n) {
+    $timeout(function() {
+      Keyboard.displayInput();
+    })
+  }
+
+  $rootScope.writeChar = function(n) {
+    $timeout(function() {
+      Keyboard.write($scope.triangles[n].char);
+    })
+  }
+
+  $rootScope.hideInput = function(n) {
+    $timeout(function() {
+      Keyboard.hideInput();
+    })
+  }
+
+  
+  
 });

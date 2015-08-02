@@ -85,13 +85,12 @@ angular.module('keywatch.utils', ['ionic'])
 
       $scope.pPol = pPol;
 
-      //$rootScope.gridID = [];
-
-      $rootScope.chars = $scope.chars;
-
       for (j = 1; j < 8; j++) {
         this.Polygon(j, "canvas" + j, "container" + j, 120, $scope, $rootScope);
       }
+
+      $rootScope.triangles = $scope.triangles;
+
     },
     Triangle: function(position, canvas, width, char, idP, id, $scope, $rootScope) {
         this.widthVal = width;
@@ -112,18 +111,25 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.beginPath();
 
         if (position % 2) {
-          $scope.triangles[id] = { 'p1X': this.p1, 'p1Y': this.heightVal };
+          
+          $scope.triangles[id] = {  'p1X': this.p1, 'p1Y': this.heightVal,
+                                    'p2X': this.p2, 'p2Y': this.topHeight, 
+                                    'p3X': this.p3, 'p3Y': this.heightVal,
+                                    'idP': idP, 'char' : char, 'w': width
+                                  };
+
           ctx.moveTo($scope.triangles[id].p1X, $scope.triangles[id].p1Y);
-           $scope.triangles[id] = { 'p2X': this.p2, 'p2Y': this.topHeight };
           ctx.lineTo($scope.triangles[id].p2X, $scope.triangles[id].p2Y);
-          $scope.triangles[id] = { 'p3X': this.p3, 'p3Y': this.heightVal };
           ctx.lineTo($scope.triangles[id].p3X, $scope.triangles[id].p3Y);
         } else {
-          $scope.triangles[id] = { 'p1X': this.p1, 'p1Y': this.topHeight };
+          $scope.triangles[id] = {  'p1X': this.p1, 'p1Y': this.topHeight,
+                                    'p2X': this.p3, 'p2Y': this.topHeight,
+                                    'p3X': this.p2, 'p3Y': this.heightVal,
+                                    'idP': idP, 'char' : char, 'w': width
+                                  };
+
           ctx.moveTo($scope.triangles[id].p1X, $scope.triangles[id].p1Y);
-           $scope.triangles[id] = { 'p2X': this.p3, 'p2Y': this.topHeight };
           ctx.lineTo($scope.triangles[id].p2X,$scope.triangles[id].p2Y);
-          $scope.triangles[id] = { 'p3X': this.p2, 'p3Y': this.heightVal };
           ctx.lineTo($scope.triangles[id].p3X, $scope.triangles[id].p3Y);
         }
 
@@ -132,10 +138,12 @@ angular.module('keywatch.utils', ['ionic'])
         var minY = Math.min(this.topHeight, this.heightVal);
         var maxY = Math.max(this.topHeight, this.heightVal);
 
-        var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal);
-        grd.addColorStop(0, '#CCC');
-        grd.addColorStop(1, '#FFF');
-        ctx.fillStyle = grd;
+        //var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal);
+        //grd.addColorStop(0, '#CCC');
+        //grd.addColorStop(1, '#FFF');
+        //ctx.fillStyle = grd;
+
+        ctx.fillStyle = "#FFF";        
 
         ctx.strokeStyle = '#CCC';
         ctx.lineWidth = 1;
@@ -161,27 +169,54 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = "#444444";
+        ctx.fillStyle = "blue";
         ctx.font = "bold 16px Arial";
         ctx.fillText(char, moveRight + 55, this.heightVal - 55);
 
     },
     Polygon: function(id, canvasName, containerName, width, $scope, $rootScope) {
-        this.widthVal = width;
-        var canvas = document.getElementById(canvasName);
-        var containerName = document.getElementById(containerName);
-        canvas.style.position = "absolute";
-        containerName.style.position = "relative";
+      this.widthVal = width;
+      var canvas = document.getElementById(canvasName);
+      var containerName = document.getElementById(containerName);
+      canvas.style.position = "absolute";
+      containerName.style.position = "relative";
 
-        if(canvas.getContext)  {
-            for (i=1; i<7; i++) {
-              var idStr = id.toString()+i.toString();
-              var that = this;
-              this.Triangle(i, canvas, this.widthVal, $scope.chars[idStr], id, idStr, $scope, $rootScope);
-            }
-        }
+      if(canvas.getContext)  {
+          for (i=1; i<7; i++) {
+            var idStr = id.toString()+i.toString();
+            var that = this;
+            this.Triangle(i, canvas, this.widthVal, $scope.chars[idStr], id, idStr, $scope, $rootScope);
+          }
+      }
+    },
+    singleTriangle: function(p1X, p1Y, p2X, p2Y, p3X, p3Y, idP, char, width, pressed) {
+      this.widthVal = width;
+      this.heightVal = parseFloat(width) * 0.866;
+      this.topHeight = 0;
+      var canvasName = "canvas" + idP;
+      var containerName = "container" + idP;
+      var canvas = document.getElementById(canvasName);
+      var container = document.getElementById(containerName);
+      canvas.style.position = "absolute";
+      container.style.position = "relative";
+      
+      var ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      ctx.moveTo(p1X, p1Y);
+      ctx.lineTo(p2X, p2Y);
+      ctx.lineTo(p3X, p3Y);
+      
+      ctx.strokeStyle = '#CCC';
+      ctx.lineWidth = 1;
 
-        
+      ctx.closePath();
+      pressed ? ctx.fillStyle="blue" : ctx.fillStyle="#FFF";   
+      ctx.fill();
+      ctx.stroke();
+
+      pressed ? ctx.fillStyle="#FFF" : ctx.fillStyle="blue"; 
+      ctx.font = "bold 18px Arial";
+      ctx.fillText(char, p1X + 55, p3Y - 55);
     },
     closestMultiple: function(n) {
       if (n > 0) {
@@ -192,6 +227,9 @@ angular.module('keywatch.utils', ['ionic'])
           return 5;
       }
     }
+
+    
+
   }
 }])
 

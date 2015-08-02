@@ -1,4 +1,5 @@
-angular.module('keywatch', ['ionic', 'keywatch.controllers', 'keywatch.utils', 'keywatch.directives'])
+angular.module('keywatch', ['ionic', 'keywatch.controllers', 'keywatch.utils', 'keywatch.directives', 
+                            'keywatch.keyboard'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

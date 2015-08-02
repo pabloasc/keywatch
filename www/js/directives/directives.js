@@ -1,10 +1,6 @@
 angular.module('keywatch.directives', ['ionic'])
 
 .controller('MyGestures', ['$scope', '$rootScope', '$timeout', function($scope, $rootScope, $timeout) {
-  
-  $timeout(function() {
-    console.log($rootScope.chars);
-  })
 
   $scope.data = {
     posX : 0,
@@ -23,20 +19,13 @@ angular.module('keywatch.directives', ['ionic'])
         return 5;
   };
 
-  $scope.closestMultipleTen = function(n) {
-    if(n > 0)
-        return Math.ceil(n/10.0) * 10;
-    else if( n < 0)
-        return Math.floor(n/10.0) * 10;
-    else
-        return 10;
-  };
+  var pressingID;
 
   var posKeyX = 0;
   var posKeyY = 0;
 
   $scope.reportEvent = function(event)  {
-    console.log('Reporting : ' + event.type);
+    //console.log('Reporting : ' + event.type);
 
     $timeout(function() {
       $scope.data['posX'] = -1 * ((event.gesture.center.pageX * 2.4) - 70);
@@ -56,16 +45,27 @@ angular.module('keywatch.directives', ['ionic'])
       
     })
 
-    //console.log($scope.gridID[posKeyX + 'x' + posKeyY]);
+    /*
+    Detect everytime that I change in the key that I am pressing on 
+    */
 
+    var pessedID = $rootScope.gridID[posKeyX + 'x' + posKeyY];
 
-
+    if(pressingID !== pessedID) {
+      if(!isNaN(pessedID)) {
+        $rootScope.removeTriangle(pressingID);
+        pressingID = pessedID;
+        $rootScope.drawTriangle(pessedID);
+      }
+    }
 
     if (event.type == "drag" || event.type == "touch") {
       $scope.display = "none";
+      $rootScope.hideInput();
     } else if(event.type == "release") {
       $scope.display = "block";
-      alert($rootScope.gridID[posKeyX + 'x' + posKeyY]);
+      $rootScope.displayInput();
+      $rootScope.writeChar($rootScope.gridID[posKeyX + 'x' + posKeyY]);
     }
   }
 }])
