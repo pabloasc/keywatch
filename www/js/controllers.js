@@ -87,6 +87,12 @@ angular.module('keywatch.controllers', ['ionic'])
     })
   }
 
+  $rootScope.writeUpperChar = function(n) {
+    $timeout(function() {
+      Keyboard.write($scope.triangles[n].char.toUpperCase());
+    })
+  }
+
   $rootScope.hideInput = function(n) {
     $timeout(function() {
       Keyboard.hideInput();

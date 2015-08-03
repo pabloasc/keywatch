@@ -25,7 +25,7 @@ angular.module('keywatch.directives', ['ionic'])
   var posKeyY = 0;
 
   $scope.reportEvent = function(event)  {
-    //console.log('Reporting : ' + event.type);
+    console.log('Reporting : ' + event.type);
 
     $timeout(function() {
       $scope.data['posX'] = -1 * ((event.gesture.center.pageX * 2.4) - 70);
@@ -62,6 +62,10 @@ angular.module('keywatch.directives', ['ionic'])
     if (event.type == "drag" || event.type == "touch") {
       $scope.display = "none";
       $rootScope.hideInput();
+    } else if(event.type == "dragend") {
+      //$scope.display = "block";
+      //$rootScope.displayInput();
+      //$rootScope.writeUpperChar($rootScope.gridID[posKeyX + 'x' + posKeyY]);
     } else if(event.type == "release") {
       $scope.display = "block";
       $rootScope.displayInput();
@@ -79,6 +83,7 @@ angular.module('keywatch.directives', ['ionic'])
 
       $ionicGesture.on('drag', scope.reportEvent, elem);
       $ionicGesture.on('touch', scope.reportEvent, elem);
+      $ionicGesture.on('dragend', scope.reportEvent, elem);
       $ionicGesture.on('release', scope.reportEvent, elem);      
 
     }

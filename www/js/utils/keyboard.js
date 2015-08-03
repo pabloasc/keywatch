@@ -4,7 +4,19 @@ angular.module('keywatch.keyboard', ['ionic'])
   return  {
     write: function(valChars) {
       var curVal = document.getElementById("txtKB").value;
-      var inpuText = document.getElementById("txtKB").setAttribute('value', curVal + valChars);
+      switch(valChars) {
+        case "<-":
+          var inpuText = document.getElementById("txtKB").setAttribute('value', curVal.slice(0, -1));
+          break;
+        case "|_|":
+          var inpuText = document.getElementById("txtKB").setAttribute('value', curVal + " ");
+          break;
+        default:
+          var inpuText = document.getElementById("txtKB").setAttribute('value', curVal + valChars);
+
+      }
+
+      
     },
     displayInput: function(valChars) {
       var curVal = document.getElementById("txtKB").style.display = "block";

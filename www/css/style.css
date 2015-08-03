@@ -1,6 +1,5 @@
 body {
 	cursor: url('http://ionicframework.com/img/finger.png'), auto;
-	background: #000000;
 }
 
 #canvas1 {
@@ -74,11 +73,10 @@ body {
 	position: fixed;
 	left: 8px;
 	top: 5px;
-	background: #000000;
 }
 
 .frame_look_feel {
-background-color: #CCCCCC;
+	background-color: #CCCCCC;
 }
 
 div[class^="letter_pos_"]	{
@@ -97,8 +95,8 @@ div[class^="letter_pos_"]:hover	{
 }
 
 .txtKB {
-	position:relative;
-	top:170px;
-	left:60px;
+	position: relative;
+	top: 170px;
+	left: 60px;
 	z-index: 2000;
 }

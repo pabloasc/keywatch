@@ -9,44 +9,44 @@ angular.module('keywatch.utils', ['ionic'])
       $scope.cant = 1;
       
       var chars = [];
-      chars[11] = "OK";
-      chars[12] = ":)";
-      chars[13] = ":(";
-      chars[14] = "R";
-      chars[15] = "T";
-      chars[16] = "Y";
+      chars[11] = ",";
+      chars[12] = "CF";
+      chars[13] = "SM";
+      chars[14] = "r";
+      chars[15] = "t";
+      chars[16] = "y";
 
-      chars[21] = "Q";
-      chars[22] = "W";
-      chars[23] = "E";
-      chars[24] = "A";
-      chars[25] = "S";
-      chars[26] = "D";
+      chars[21] = "q";
+      chars[22] = "w";
+      chars[23] = "e";
+      chars[24] = "a";
+      chars[25] = "s";
+      chars[26] = "d";
 
-      chars[31] = "U";
-      chars[32] = "I";
-      chars[33] = "O";
-      chars[34] = "J";
-      chars[35] = "K";
-      chars[36] = "P";
+      chars[31] = "u";
+      chars[32] = "i";
+      chars[33] = "o";
+      chars[34] = "j";
+      chars[35] = "k";
+      chars[36] = "p";
 
-      chars[41] = "F";
-      chars[42] = "G";
-      chars[43] = "H";
-      chars[44] = "V";
-      chars[45] = "B";
-      chars[46] = "N";
+      chars[41] = "f";
+      chars[42] = "g";
+      chars[43] = "h";
+      chars[44] = "v";
+      chars[45] = "b";
+      chars[46] = "n";
 
-      chars[51] = "Z";
-      chars[52] = "X";
-      chars[53] = "C";
+      chars[51] = "z";
+      chars[52] = "x";
+      chars[53] = "c";
       chars[54] = "1";
       chars[55] = "2";
       chars[56] = "3";
 
-      chars[61] = "M";
-      chars[62] = "L";
-      chars[63] = "Ñ";
+      chars[61] = "m";
+      chars[62] = "l";
+      chars[63] = "ñ";
       chars[64] = "7";
       chars[65] = "8";
       chars[66] = "9";
@@ -55,7 +55,7 @@ angular.module('keywatch.utils', ['ionic'])
       chars[72] = "5";
       chars[73] = "6";
       chars[74] = "0";
-      chars[75] = "_";
+      chars[75] = "|_|";
       chars[76] = "<-";
 
       $scope.chars = chars;
