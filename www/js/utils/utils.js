@@ -9,9 +9,9 @@ angular.module('keywatch.utils', ['ionic'])
       $scope.cant = 1;
       
       var chars = [];
-      chars[11] = ",";
-      chars[12] = "CF";
-      chars[13] = "SM";
+      chars[11] = ".";
+      chars[12] = "/";
+      chars[13] = "@";
       chars[14] = "r";
       chars[15] = "t";
       chars[16] = "y";
