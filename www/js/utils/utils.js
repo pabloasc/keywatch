@@ -7,7 +7,7 @@ angular.module('keywatch.utils', ['ionic'])
 
       $scope.triangles = {};
       $scope.cant = 1;
-      
+
       var chars = [];
       chars[11] = ".";
       chars[12] = "/";
@@ -61,7 +61,7 @@ angular.module('keywatch.utils', ['ionic'])
       $scope.chars = chars;
 
       var pPol = [];
-      
+
       pPol[11] = 50;
       pPol[12] = 240;
 
@@ -111,9 +111,9 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.beginPath();
 
         if (position % 2) {
-          
+
           $scope.triangles[id] = {  'p1X': this.p1, 'p1Y': this.heightVal,
-                                    'p2X': this.p2, 'p2Y': this.topHeight, 
+                                    'p2X': this.p2, 'p2Y': this.topHeight,
                                     'p3X': this.p3, 'p3Y': this.heightVal,
                                     'idP': idP, 'char' : char, 'w': width
                                   };
@@ -138,14 +138,8 @@ angular.module('keywatch.utils', ['ionic'])
         var minY = Math.min(this.topHeight, this.heightVal);
         var maxY = Math.max(this.topHeight, this.heightVal);
 
-        //var grd = ctx.createLinearGradient(0, 0, this.widthVal, this.heightVal);
-        //grd.addColorStop(0, '#CCC');
-        //grd.addColorStop(1, '#FFF');
-        //ctx.fillStyle = grd;
-
-        ctx.fillStyle = "#FFF";        
-
-        ctx.strokeStyle = '#CCC';
+        ctx.fillStyle = "#FFF";
+        ctx.strokeStyle = '#d8d8d8';
         ctx.lineWidth = 1;
 
         var xMoved = 0;
@@ -158,7 +152,6 @@ angular.module('keywatch.utils', ['ionic'])
               xMoved = y + this.closestMultiple($scope.pPol[idP.toString()+"1"]);
               yMoved = x + this.closestMultiple($scope.pPol[idP.toString()+"2"]);
               $rootScope.gridID[xMoved+'x'+yMoved] = id;
-              //document.getElementById('output').innerHTML += "<span style='position:absolute;top:"+ xMoved +"px;left:"+yMoved+"px;'>.</span>";
             }
           }
           y = this.closestMultiple(minY);
@@ -169,7 +162,7 @@ angular.module('keywatch.utils', ['ionic'])
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "#4078c0";
         ctx.font = "bold 16px Arial";
         ctx.fillText(char, moveRight + 55, this.heightVal - 55);
 
@@ -199,22 +192,22 @@ angular.module('keywatch.utils', ['ionic'])
       var container = document.getElementById(containerName);
       canvas.style.position = "absolute";
       container.style.position = "relative";
-      
+
       var ctx = canvas.getContext("2d");
       ctx.beginPath();
       ctx.moveTo(p1X, p1Y);
       ctx.lineTo(p2X, p2Y);
       ctx.lineTo(p3X, p3Y);
-      
-      ctx.strokeStyle = '#CCC';
+
+      ctx.strokeStyle = '#d8d8d8';
       ctx.lineWidth = 1;
 
       ctx.closePath();
-      pressed ? ctx.fillStyle="blue" : ctx.fillStyle="#FFF";   
+      pressed ? ctx.fillStyle="#4078c0" : ctx.fillStyle="#FFFFFF";
       ctx.fill();
       ctx.stroke();
 
-      pressed ? ctx.fillStyle="#FFF" : ctx.fillStyle="blue"; 
+      pressed ? ctx.fillStyle="#FFF" : ctx.fillStyle="#4078c0";
       ctx.font = "bold 18px Arial";
       ctx.fillText(char, p1X + 55, p3Y - 55);
     },
@@ -228,8 +221,7 @@ angular.module('keywatch.utils', ['ionic'])
       }
     }
 
-    
+
 
   }
 }])
-
