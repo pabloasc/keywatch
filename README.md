@@ -7,6 +7,6 @@ See the [demo](http://meristemolabs.appspot.com/keywatch/index.html#/app/smartwa
 ## Installation & Development
 
 1. clone this repo: git clone https://github.com/pabloasc/keywatch.git
-2. cd ionic-preview-app
+2. cd keywatch
 3. npm install
 4. run ionic serve from a terminal
